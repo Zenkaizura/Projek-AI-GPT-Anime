@@ -8,11 +8,16 @@ Gunakan Python 3.10 atau yang lebih baru. Di direktori proyek, jalankan perintah
 
 ### Windows (PowerShell)
 
+Pastikan Python tersedia terlebih dahulu:
+
 ```powershell
-py -3 -m venv .venv
-.venv\Scripts\python.exe -m pip install -r requirements.txt
-.venv\Scripts\python.exe main.py
+python --version
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe main.py
 ```
+
+Jika `python --version` juga gagal atau membuka Microsoft Store, pasang Python 3.10+ dari [python.org](https://www.python.org/downloads/windows/), pilih **Add python.exe to PATH** saat instalasi, lalu buka PowerShell baru. Pada komputer kampus yang membatasi instalasi, minta bantuan pengelola komputer.
 
 ### macOS/Linux
 
