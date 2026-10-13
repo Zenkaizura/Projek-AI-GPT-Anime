@@ -1,8 +1,14 @@
 # Projek AI GPT Anime
 
-Langkah 1: avatar desktop sederhana. Aplikasi ini belum memakai AI, mikrofon, atau API berbayar.
+Prototipe avatar tersedia dalam dua versi. Keduanya belum memakai AI, mikrofon, atau API berbayar.
 
-## Menjalankan
+## Versi browser (tanpa instalasi)
+
+Buka [`docs/index.html`](docs/index.html) di browser. Avatar bisa disapa, disembunyikan, dan ditampilkan lagi. Di Chrome/Edge yang mendukung Document Picture-in-Picture, tombol **Buka jendela kecil** menampilkan avatar dalam jendela mengambang. Jendela browser ini belum menjadi overlay desktop transparan.
+
+Agar dapat dibuka lewat tautan tanpa mengunduh repo, pemilik repo dapat mengaktifkan GitHub Pages di **Settings → Pages → Build and deployment**: pilih **Deploy from a branch**, branch **main**, folder **/docs**, lalu **Save**. Setelah GitHub Pages selesai menerbitkan halaman, alamatnya adalah `https://zenkaizura.github.io/Projek-AI-GPT-Anime/`. Jangan menganggap alamat itu aktif sebelum GitHub Pages melaporkan bahwa situs berhasil diterbitkan.
+
+## Versi desktop Python
 
 Gunakan Python 3.10 atau yang lebih baru. Di direktori proyek, jalankan perintah sesuai sistem operasi:
 

@@ -1,0 +1,96 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #171327;
+  color: #f7efff;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 10%, #523568 0, transparent 36%),
+    radial-gradient(circle at 92% 85%, #483364 0, transparent 35%),
+    #171327;
+}
+
+button { font: inherit; cursor: pointer; }
+
+.page { width: min(1080px, 100%); margin: 0 auto; padding: 64px 24px; }
+.intro { max-width: 700px; margin-bottom: 36px; }
+.eyebrow, .step-label { color: #e1b5ef; font-size: .75rem; font-weight: 800; letter-spacing: .17em; }
+h1 { font-size: clamp(2.2rem, 5vw, 4.4rem); line-height: 1.05; margin: 12px 0 16px; letter-spacing: -.055em; }
+h2 { font-size: 1.9rem; margin: 14px 0 12px; letter-spacing: -.03em; }
+p { line-height: 1.6; }
+.intro p { max-width: 560px; color: #d3c5e2; font-size: 1.04rem; }
+
+.workspace { display: grid; grid-template-columns: minmax(300px, 1fr) minmax(280px, 370px); gap: 30px; align-items: stretch; }
+.stage {
+  min-height: 490px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #5c4573;
+  border-radius: 28px;
+  background: linear-gradient(150deg, #352447, #211a35 70%);
+  box-shadow: 0 24px 75px #09061269;
+}
+.avatar-card {
+  width: min(312px, calc(100% - 32px));
+  padding: 15px 18px 18px;
+  border: 1px solid #d6b0e04a;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #503761, #382a4f 75%);
+  box-shadow: 0 20px 60px #100a29a6;
+}
+.card-topline { display: flex; align-items: center; gap: 8px; color: #f4e6ff; font-size: .85rem; font-weight: 700; }
+.online-dot { width: 8px; height: 8px; border-radius: 50%; background: #9de5b8; box-shadow: 0 0 0 4px #9de5b824; }
+.character-wrap { height: 264px; display: grid; place-items: end center; overflow: hidden; }
+.character { width: 224px; height: 284px; animation: float 3.2s ease-in-out infinite; transform-origin: center bottom; }
+.eyes { animation: blink 5s ease-in-out infinite; transform-origin: center 162px; }
+.character.talking .mouth { animation: talk .2s ease-in-out 4 alternate; transform-origin: center 192px; }
+.speech { margin: 0 0 14px; padding: 10px 12px; min-height: 47px; border-radius: 12px; background: #241b39; color: #f7edff; font-size: .88rem; }
+.card-actions { display: flex; gap: 8px; }
+.card-actions .button { flex: 1; }
+.button { border: 0; border-radius: 11px; padding: 11px 14px; font-size: .88rem; font-weight: 750; transition: transform .15s ease, background .15s ease; }
+.button:hover { transform: translateY(-2px); }
+.button:focus-visible { outline: 3px solid #e3aafa; outline-offset: 3px; }
+.button-primary { color: #25152f; background: #eeb8f0; }
+.button-primary:hover { background: #f5cffa; }
+.button-quiet { color: #f0e1ff; background: #715784; }
+.button-quiet:hover { background: #88689d; }
+.button-outline { color: #f4eaff; background: transparent; border: 1px solid #a182b9; }
+.button-outline:hover { background: #ffffff12; }
+.controls { padding: 26px 8px; }
+.controls > p { color: #d7c9e4; }
+.controls > .button { display: block; width: 100%; margin: 11px 0; }
+.status { min-height: 46px; font-size: .84rem; color: #ebc8f3 !important; }
+.note { display: grid; gap: 6px; margin-top: 24px; padding: 15px; border: 1px solid #634b75; border-radius: 14px; color: #ccbdd8; font-size: .83rem; line-height: 1.5; }
+.note strong { color: #f7e8ff; }
+
+body.pip {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #231b34;
+  overflow: hidden;
+}
+body.pip .avatar-card { width: min(312px, calc(100vw - 16px)); box-shadow: none; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes blink { 0%, 43%, 47%, 100% { transform: scaleY(1); } 45% { transform: scaleY(.12); } }
+@keyframes talk { from { transform: scaleY(1); } to { transform: scaleY(2.2); } }
+
+@media (max-width: 760px) {
+  .page { padding: 36px 18px; }
+  .workspace { grid-template-columns: 1fr; }
+  .stage { min-height: 450px; }
+  .controls { padding: 4px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

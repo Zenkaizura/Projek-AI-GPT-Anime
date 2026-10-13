@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#171327" />
+    <title>Avatar Anime · Demo Browser</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="intro">
+        <span class="eyebrow">PROJEK AI GPT ANIME</span>
+        <h1>Kenalan dengan avatarmu.</h1>
+        <p>
+          Ini langkah pertama versi browser. Coba tampilkan, sembunyikan, dan
+          sapa avatar tanpa memasang Python atau memakai API berbayar.
+        </p>
+      </header>
+
+      <section class="workspace" aria-label="Demo avatar">
+        <div class="stage" id="avatar-home">
+          <article class="avatar-card" id="avatar-card" aria-label="Avatar Neko">
+            <div class="card-topline">
+              <span class="online-dot" aria-hidden="true"></span>
+              <span>Neko · Demo</span>
+            </div>
+
+            <div class="character-wrap">
+              <svg
+                class="character"
+                viewBox="0 0 260 330"
+                role="img"
+                aria-labelledby="avatar-title"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title id="avatar-title">Avatar anime berambut ungu dengan telinga kucing</title>
+                <defs>
+                  <linearGradient id="hair" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#59407d" />
+                    <stop offset="1" stop-color="#29203e" />
+                  </linearGradient>
+                  <linearGradient id="dress" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#7e5aa7" />
+                    <stop offset="1" stop-color="#4d3777" />
+                  </linearGradient>
+                </defs>
+                <ellipse cx="130" cy="310" rx="88" ry="11" fill="#0e0a20" opacity=".24" />
+                <path d="M75 246C51 234 43 197 49 143c4-49 30-86 81-87 52 1 77 38 81 87 6 54-2 91-26 103Z" fill="url(#hair)" />
+                <path d="M64 112 73 27l48 48Z" fill="#342548" />
+                <path d="m139 75 48-48 9 85Z" fill="#342548" />
+                <path d="m79 43-5 52 30-23Z" fill="#e999bc" />
+                <path d="m181 43 5 52-30-23Z" fill="#e999bc" />
+                <path d="M58 306c0-51 28-80 72-80s72 29 72 80Z" fill="url(#dress)" />
+                <path d="M91 306v-47c0-15 13-25 39-25s39 10 39 25v47Z" fill="#f4e8ff" />
+                <ellipse cx="130" cy="149" rx="65" ry="78" fill="#ffe2d8" />
+                <path d="M62 133c-3-48 23-73 68-76 45 3 71 28 68 76-17-21-37-36-53-31-21 19-50 27-83 31Z" fill="url(#hair)" />
+                <g class="eyes">
+                  <ellipse cx="100" cy="161" rx="9" ry="16" fill="#5a4692" />
+                  <ellipse cx="160" cy="161" rx="9" ry="16" fill="#5a4692" />
+                  <ellipse cx="103" cy="154" rx="3" ry="5" fill="#fff" />
+                  <ellipse cx="163" cy="154" rx="3" ry="5" fill="#fff" />
+                </g>
+                <ellipse cx="89" cy="183" rx="16" ry="6" fill="#f2a2b6" opacity=".8" />
+                <ellipse cx="171" cy="183" rx="16" ry="6" fill="#f2a2b6" opacity=".8" />
+                <path class="mouth" d="M124 192q6 8 12 0" fill="none" stroke="#a45c7d" stroke-width="3" stroke-linecap="round" />
+                <ellipse cx="118" cy="242" rx="14" ry="9" fill="#e983b2" />
+                <ellipse cx="142" cy="242" rx="14" ry="9" fill="#e983b2" />
+                <circle cx="130" cy="242" r="8" fill="#b0548d" />
+              </svg>
+            </div>
+
+            <p class="speech" id="speech" aria-live="polite">Halo! Senang bertemu denganmu.</p>
+            <div class="card-actions">
+              <button class="button button-primary" id="greet-button" type="button">Sapa Neko</button>
+              <button class="button button-quiet" id="hide-card-button" type="button">Sembunyikan</button>
+            </div>
+          </article>
+        </div>
+
+        <aside class="controls" aria-label="Kontrol demo">
+          <span class="step-label">LANGKAH 01 / DEMO BROWSER</span>
+          <h2>Coba avatarnya</h2>
+          <p>
+            Jendela kecil mengambang tersedia di browser yang mendukung
+            Document Picture-in-Picture, seperti beberapa versi Chrome dan Edge.
+          </p>
+          <button class="button button-outline" id="toggle-button" type="button">Sembunyikan avatar</button>
+          <button class="button button-primary" id="float-button" type="button">Buka jendela kecil</button>
+          <p class="status" id="status" role="status" aria-live="polite">
+            Avatar sedang tampil di halaman.
+          </p>
+          <div class="note">
+            <strong>Belum terhubung ke AI.</strong>
+            <span>Ucapan Neko di sini hanya contoh. Mikrofon dan percakapan AI akan ditambahkan pada tahap berikutnya.</span>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
