@@ -15,8 +15,8 @@
         <span class="eyebrow">PROJEK AI GPT ANIME</span>
         <h1>Kenalan dengan avatarmu.</h1>
         <p>
-          Ini langkah pertama versi browser. Coba tampilkan, sembunyikan, dan
-          sapa avatar tanpa memasang Python atau memakai API berbayar.
+          Coba avatar dan chat teks demo tanpa memasang Python atau memakai API
+          berbayar.
         </p>
       </header>
 
@@ -81,7 +81,7 @@
         </div>
 
         <aside class="controls" aria-label="Kontrol demo">
-          <span class="step-label">LANGKAH 01 / DEMO BROWSER</span>
+          <span class="step-label">LANGKAH 01–02 / DEMO BROWSER</span>
           <h2>Coba avatarnya</h2>
           <p>
             Jendela kecil mengambang tersedia di browser yang mendukung
@@ -92,9 +92,23 @@
           <p class="status" id="status" role="status" aria-live="polite">
             Avatar sedang tampil di halaman.
           </p>
+          <section class="chat" aria-labelledby="chat-heading">
+            <h3 id="chat-heading">Chat teks demo</h3>
+            <div class="chat-log" id="chat-log" role="log" aria-label="Percakapan demo" aria-live="polite">
+              <p class="chat-message bot"><span>Neko · demo</span>Halo! Tulis pesan untuk mencoba tampilan chat.</p>
+            </div>
+            <form id="chat-form">
+              <label for="chat-input">Pesanmu</label>
+              <div class="chat-compose">
+                <input id="chat-input" type="text" maxlength="240" autocomplete="off" placeholder="Ketik pesan singkat..." required />
+                <button class="button button-primary" type="submit">Kirim</button>
+              </div>
+            </form>
+            <p class="chat-disclaimer">Balasan otomatis ini hanya demo, belum memakai model AI.</p>
+          </section>
           <div class="note">
             <strong>Belum terhubung ke AI.</strong>
-            <span>Ucapan Neko di sini hanya contoh. Mikrofon dan percakapan AI akan ditambahkan pada tahap berikutnya.</span>
+            <span>Kunci API tidak boleh ditaruh di halaman web. AI sungguhan nanti memerlukan layanan backend yang aman.</span>
           </div>
         </aside>
       </section>

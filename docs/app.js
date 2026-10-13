@@ -5,6 +5,9 @@ const speech = document.querySelector("#speech");
 const status = document.querySelector("#status");
 const toggleButton = document.querySelector("#toggle-button");
 const floatButton = document.querySelector("#float-button");
+const chatForm = document.querySelector("#chat-form");
+const chatInput = document.querySelector("#chat-input");
+const chatLog = document.querySelector("#chat-log");
 
 const greetings = [
   "Halo! Senang bertemu denganmu.",
@@ -17,6 +20,34 @@ let pipWindow = null;
 
 function setStatus(message) {
   status.textContent = message;
+}
+
+function speak(message) {
+  speech.textContent = message;
+  character.classList.remove("talking");
+  void character.getBoundingClientRect();
+  character.classList.add("talking");
+}
+
+function addChatMessage(sender, message, kind) {
+  const item = document.createElement("p");
+  item.className = `chat-message ${kind}`;
+  const label = document.createElement("span");
+  label.textContent = sender;
+  item.append(label, document.createTextNode(message));
+  chatLog.appendChild(item);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+function demoReply(message) {
+  const lower = message.toLocaleLowerCase("id-ID");
+  if (/\b(halo|hai|hi|hello)\b/u.test(lower)) {
+    return "Halo juga! Aku masih dalam mode demo, tapi senang bisa menyapamu.";
+  }
+  if (/\b(belajar|tugas|sekolah|kuliah)\b/u.test(lower)) {
+    return "Semangat belajarnya! Nanti, setelah AI terhubung, aku bisa membantu membahas tugasmu.";
+  }
+  return "Pesanmu sudah masuk. Saat ini aku hanya punya balasan demo; percakapan AI akan ditambahkan nanti.";
 }
 
 function showAvatar() {
@@ -48,10 +79,19 @@ document.querySelector("#hide-card-button").addEventListener("click", hideAvatar
 
 document.querySelector("#greet-button").addEventListener("click", () => {
   greetingIndex = (greetingIndex + 1) % greetings.length;
-  speech.textContent = greetings[greetingIndex];
-  character.classList.remove("talking");
-  void character.getBoundingClientRect();
-  character.classList.add("talking");
+  speak(greetings[greetingIndex]);
+});
+
+chatForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const message = chatInput.value.trim();
+  if (!message) return;
+  addChatMessage("Kamu", message, "user");
+  chatInput.value = "";
+  const reply = demoReply(message);
+  addChatMessage("Neko · demo", reply, "bot");
+  speak(reply);
+  chatInput.focus();
 });
 
 floatButton.addEventListener("click", async () => {
