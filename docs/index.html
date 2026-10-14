@@ -7,6 +7,7 @@
     <title>Avatar Anime · Demo Browser</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
+    <script src="./config.js"></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -95,7 +96,7 @@
           <section class="chat" aria-labelledby="chat-heading">
             <h3 id="chat-heading">Chat teks demo</h3>
             <div class="chat-log" id="chat-log" role="log" aria-label="Percakapan demo" aria-live="polite">
-              <p class="chat-message bot"><span>Neko · demo</span>Halo! Tulis pesan untuk mencoba tampilan chat.</p>
+              <p class="chat-message bot"><span>Neko · sistem</span>Halo! Tulis pesan untuk mencoba tampilan chat.</p>
             </div>
             <form id="chat-form">
               <label for="chat-input">Pesanmu</label>
@@ -104,9 +105,9 @@
                 <button class="button button-primary" type="submit">Kirim</button>
               </div>
             </form>
-            <p class="chat-disclaimer">Balasan otomatis ini hanya demo, belum memakai model AI.</p>
+            <p class="chat-disclaimer" id="chat-disclaimer">Balasan otomatis ini hanya demo, belum memakai model AI.</p>
           </section>
-          <div class="note">
+          <div class="note" id="connection-note">
             <strong>Belum terhubung ke AI.</strong>
             <span>Kunci API tidak boleh ditaruh di halaman web. AI sungguhan nanti memerlukan layanan backend yang aman.</span>
           </div>

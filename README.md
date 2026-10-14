@@ -8,6 +8,20 @@ Buka [`docs/index.html`](docs/index.html) di browser. Avatar bisa disapa, disemb
 
 Agar dapat dibuka lewat tautan tanpa mengunduh repo, pemilik repo dapat mengaktifkan GitHub Pages di **Settings → Pages → Build and deployment**: pilih **Deploy from a branch**, branch **main**, folder **/docs**, lalu **Save**. Setelah GitHub Pages selesai menerbitkan halaman, alamatnya adalah `https://zenkaizura.github.io/Projek-AI-GPT-Anime/`. Jangan menganggap alamat itu aktif sebelum GitHub Pages melaporkan bahwa situs berhasil diterbitkan.
 
+## Backend Gemini untuk chat AI
+
+Kode backend Python ada di [`backend/app.py`](backend/app.py). Backend ini belum diterbitkan sebagai layanan online, dan [`docs/config.js`](docs/config.js) sengaja belum berisi alamat backend. Karena itu website tetap memakai balasan demo. Jangan menaruh API key di `docs/`, GitHub, atau chat.
+
+Untuk menyiapkan dan menguji backend di cloud:
+
+```sh
+python3 -m venv .backend-venv
+.backend-venv/bin/python -m pip install -r backend/requirements.txt
+.backend-venv/bin/python -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
+```
+
+Backend membaca `GEMINI_API_KEY` dari variabel rahasia server. Model bawaan adalah `gemini-2.5-flash`; `GEMINI_MODEL` dapat diatur jika model yang tersedia untuk kuota gratis akun berbeda. Untuk membuat chat AI berfungsi di website, backend perlu diterbitkan di hosting HTTPS, kunci dimasukkan melalui pengaturan rahasia hosting, dan alamat backend diisi di `docs/config.js`. Batasi pemakaian backend sebelum membukanya untuk umum agar kuota uji coba tidak habis.
+
 ## Versi desktop Python
 
 Gunakan Python 3.10 atau yang lebih baru. Di direktori proyek, jalankan perintah sesuai sistem operasi:

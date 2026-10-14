@@ -8,6 +8,17 @@ const floatButton = document.querySelector("#float-button");
 const chatForm = document.querySelector("#chat-form");
 const chatInput = document.querySelector("#chat-input");
 const chatLog = document.querySelector("#chat-log");
+const chatHeading = document.querySelector("#chat-heading");
+const chatDisclaimer = document.querySelector("#chat-disclaimer");
+const chatSubmit = chatForm.querySelector('button[type="submit"]');
+const aiApiUrl = (window.NEKO_API_URL || "").trim().replace(/\/$/, "");
+
+if (aiApiUrl) {
+  chatHeading.textContent = "Chat dengan AI";
+  chatDisclaimer.textContent = "Balasan diproses melalui backend AI. Hindari mengirim data pribadi.";
+  document.querySelector("#connection-note strong").textContent = "Backend AI dikonfigurasi.";
+  document.querySelector("#connection-note span").textContent = "Jika balasan gagal, periksa layanan backend dan kuota API.";
+}
 
 const greetings = [
   "Halo! Senang bertemu denganmu.",
@@ -82,16 +93,37 @@ document.querySelector("#greet-button").addEventListener("click", () => {
   speak(greetings[greetingIndex]);
 });
 
-chatForm.addEventListener("submit", (event) => {
+chatForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const message = chatInput.value.trim();
   if (!message) return;
   addChatMessage("Kamu", message, "user");
   chatInput.value = "";
-  const reply = demoReply(message);
-  addChatMessage("Neko · demo", reply, "bot");
-  speak(reply);
-  chatInput.focus();
+  chatSubmit.disabled = true;
+  try {
+    let reply;
+    if (aiApiUrl) {
+      const response = await fetch(`${aiApiUrl}/api/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message }),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if (typeof data.reply !== "string" || !data.reply.trim()) throw new Error("Jawaban kosong");
+      reply = data.reply.trim();
+    } else {
+      reply = demoReply(message);
+    }
+    addChatMessage(aiApiUrl ? "Neko · AI" : "Neko · demo", reply, "bot");
+    speak(reply);
+  } catch (error) {
+    console.error("Chat AI gagal:", error);
+    addChatMessage("Neko", "Layanan AI belum tersedia. Coba lagi nanti.", "bot");
+  } finally {
+    chatSubmit.disabled = false;
+    chatInput.focus();
+  }
 });
 
 floatButton.addEventListener("click", async () => {
